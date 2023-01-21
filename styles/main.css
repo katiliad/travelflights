@@ -1,0 +1,65 @@
+#header_info{
+    height: 20vh;
+}
+
+#Selection_Box{
+    height:10vh;
+    text-align:center;
+}
+
+div > label {
+    font-size: 2em;
+    margin-right: 10px;
+}
+
+div input {
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+
+#header_image {
+    position:relative;
+    float:right;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+    max-height: 100%;
+}
+
+h1 {
+    position:fixed;
+    display: inline-block;
+    left:20px;
+    top:0;
+}
+
+#search_button:hover {
+    background-color: skyblue;
+}
+
+
+main {
+    height:60vh;
+}
+
+caption {
+    margin-top: 10px;
+    margin-bottom:20px;
+}
+
+#Available_Flights_Tb{
+    margin: 0 auto;
+    width:100%;
+    font-size:20px;
+    border: 1px solid black;
+    
+}
+#header_fligts_table {
+    background-color: rgb(207, 205, 205);
+}
+
+footer{
+    height:10vh;
+}
+
