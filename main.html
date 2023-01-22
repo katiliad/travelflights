@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title> Time to explore the world</title>
         <link rel="stylesheet" href="styles/main.css">
+        <script src="js/main.js" defer></script>
     </head>
 
     <body>
@@ -18,23 +19,55 @@
             <div id="Selection_Box">
                 <label id="from_label"> From: <input name="From_input" type="text">  </label>
                 <label id="To_label"> To: <input name="To_input" type="text">  </label>
-                <input id="search_button" name="Search_input" type="button" value="Search">
+                <label id="Date_label"> Date: <input name="Date_input" type="date">  </label>
+                <input id="search_button" name="Search_input" type="button" value="Search" onclick="addFlights()">
             </div>
         </header>
 
         <main>
+
+            <div class="dropdown">
+                <button class="dropbtn" onmouseover="populateDropdown()">Columns</button>
+                <div id="dropdown-content">
+                </div>
+              </div> 
+        
             <table id="Available_Flights_Tb"> 
-                <caption> Available Flights </caption>
+                
+                <caption> Available Flights  </caption>
+                
                 <tr id="header_fligts_table">
-                    <th>Price</th>
-                    <th>Stops</th>
-                    <th>Airline Code</th>
-                    <th>Date</th>
+                    <th onclick="sortTable(0)">Price</th>
+                    <th onclick="sortTable(1)">Stops</th>
+                    <th onclick="sortTable(2)">Airline Code</th>
+                    <th onclick="sortTable(3)">Date</th>
+                </tr>
+             
+                <!-- <tr>
+                    <td><input type="text" id="Price"></td>
+                    <td><input type="text" id="Stops"></td>
+                    <td><input type="text" id="AirlineCode"></td>
+                    <td><input type="text" id="Date"></td>
+
+                </tr> -->
+                <tr>
+                    <td>test1</td>
+                    <td>whooo</td>
+                    <td>jkkk</td>
+                    <td>ncmncmn</td>
+                </tr>
+                <tr>
+                    <td>bc</td>
+                    <td>ddd</td>
+                    <td>1233</td>
+                    <td>tff</td>
                 </tr>
             </table>
+
+              
         </main>
         <footer>
-            &copy; Copyright Aikaterini Iliadou Msc Applied Informatics 2023
+            &copy; Copyright Aikaterini Iliadou, MSc Applied Informatics 2023
             
         </footer>
     </body>
