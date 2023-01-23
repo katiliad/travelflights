@@ -1,15 +1,11 @@
-function showAll() {
-    var settings = {
-        "url": "http://localhost:8080/students",
-        "method": "GET",
-        "timeout": 0,
-        "processData": false,
-        "mimeType": "multipart/form-data",
-        "contentType": false
-    };
-    $.ajax(settings).done(function (response) {
-        updateTable(response);
-    });
+
+function parseResponse(response) {
+    var main_area = document.getElementById("main_area");
+    var para = document.createElement('p');
+    para.id = 'get_dump';
+    response_string = JSON.stringify(response);
+    para.innerHTML = "<p>" + response_string + "</p>";
+    main_area.appendChild(para);
 }
 
 function updateTable(json) {
@@ -38,18 +34,19 @@ function updateTable(json) {
 
 function addflights() {				
     var settings = {
-        "url": "http://localhost:8080/addflights?" +
-           "Price=" + document.getElementById("Price").value +
-            "&Stops=" + document.getElementById("Stops").value +
-            "&Airline_Code=" + document.getElementById("AirlineCode").value + "&Date=" + document.getElementById("Date").value ,
+        "url": "https://test.api.amadeus.com/v2/shopping/flight-offers?" +
+        "originLocationCode=" + document.getElementById("from_input").value +
+        "&destinationLocationCode=" + document.getElementById("to_input").value +
+        "&departureDate=" + document.getElementById("date_input").value +
+        "&adults=1",
         "method": "GET",
         "timeout": 0,
-        "processData": false,
-        "mimeType": "multipart/form-data",
-        "contentType": false
-    };
+        "headers": {
+          "Authorization": "Bearer RPdPUzPVf23y3YbqnBqzxndygOxx"
+        },
+      };
     $.ajax(settings).done(function (response) {
-        showAll();
+        parseResponse(response);
     });
 }
 

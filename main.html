@@ -1,3 +1,4 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 <!doctype html>
 <html>
@@ -17,14 +18,14 @@
             </div>
 
             <div id="Selection_Box">
-                <label id="from_label"> From: <input name="From_input" type="text">  </label>
-                <label id="To_label"> To: <input name="To_input" type="text">  </label>
-                <label id="Date_label"> Date: <input name="Date_input" type="date">  </label>
-                <input id="search_button" name="Search_input" type="button" value="Search" onclick="addFlights()">
+                <label id="from_label"> From: <input id = "from_input" name="From_input" type="text">  </label>
+                <label id="To_label"> To: <input id = "to_input" name="To_input" type="text">  </label>
+                <label id="Date_label"> Date: <input id = "date_input" name="Date_input" type="date">  </label>
+                <input id="search_button" name="Search_input" type="button" value="Search" onclick="addflights()">
             </div>
         </header>
 
-        <main>
+        <main id = "main_area">
 
             <div class="dropdown">
                 <button class="dropbtn" onmouseover="populateDropdown()">Columns</button>
