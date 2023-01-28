@@ -1,6 +1,10 @@
 const express = require('express')
 const {spawn} = require('child_process');
 var app = express();
+const cors = require('cors');
+app.use(cors({
+    origin: '*'
+}));
 
 const port = 3000
 
@@ -18,13 +22,15 @@ app.get('/searchFlights', (req, res) => {
     python.stdout.on('data', function (data) {
       console.log('Pipe data from python script ...');
       dataToSend = data.toString();
+      console.log("start data to send")
       console.log(dataToSend)
+      console.log("end data to send")
     });
     // in close event we are sure that stream from child process is closed
     python.on('close', (code) => {
     console.log(`child process close all stdio with code ${code}`);
     // send data to browser
-    res.send(dataToSend)
+    res.json(dataToSend)
     });
     })
 

@@ -64,10 +64,12 @@ function callPythonFindFlights(){
     headers: {
       "Content-Type": "application/x-www-form-urlencoded"
     },
-    mode: 'no-cors',
   }).then(function(response) {
-    parseResponse(response)
-  })
+    return response.json();
+  }).then(function(data) {
+    console.log(data)
+    parseResponse(data)
+  });
 }
 
 
