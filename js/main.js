@@ -1,4 +1,3 @@
-
 function parseResponse(response) {
     var main_area = document.getElementById("main_area");
     var para = document.createElement('p');
@@ -49,6 +48,28 @@ function addflights() {
         parseResponse(response);
     });
 }
+
+function callPythonFindFlights(){
+  var from_val = document.getElementById("from_input").value;
+  var to_val = document.getElementById("to_input").value;
+  var date_val = document.getElementById("date_input").value;
+
+  url = "http://localhost:3000/searchFlights?" +
+  "from=" + from_val +
+  "&to=" + to_val +
+  "&date=" + date_val;
+
+  fetch(url, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    mode: 'no-cors',
+  }).then(function(response) {
+    parseResponse(response)
+  })
+}
+
 
 function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;

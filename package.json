@@ -1,0 +1,23 @@
+{
+  "name": "travelflights",
+  "version": "1.0.0",
+  "description": "A Node based app to fetch travel data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/katiliad/travelflights.git"
+  },
+  "author": "kat.iliad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/katiliad/travelflights/issues"
+  },
+  "homepage": "https://github.com/katiliad/travelflights#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2"
+  }
+}
