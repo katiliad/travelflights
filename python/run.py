@@ -10,8 +10,8 @@ def writeRawResponseToFile(response):
 
 def downloadData(from_field, to_field, date):
     amadeus = Client(
-        client_id='xxx',
-        client_secret='xxx'
+        client_id='xx',
+        client_secret='xx'
     )
 
     try:
