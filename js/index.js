@@ -29,10 +29,23 @@ app.get('/searchFlights', (req, res) => {
     // in close event we are sure that stream from child process is closed
     python.on('close', (code) => {
     console.log(`child process close all stdio with code ${code}`);
-    // send data to browser
-    res.json(dataToSend)
+      var printdata;
+      // launching secondary python script to print data
+      const python2 = spawn('python', ['../python/printJson.py']);
+      // collect data from script
+      python2.stdout.on('data', function (data) {
+        console.log('Print Pipe data from python script ...');
+        printdata = data.toString();
+        console.log("Print start data to send")
+        console.log(printdata)
+        console.log("Print end data to send")
+      });
+      python2.on('close', (code) => {
+        console.log(`print child process close all stdio with code ${code}`);
+        res.json(printdata);
+      });
     });
-    })
+  })
 
 app.listen(port, () => console.log(`Example app listening on port 
 ${port}!`))
