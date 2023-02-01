@@ -1,52 +1,22 @@
+function updateTable(tableId, response) {
+  let tableBody = "";
+  data = JSON.parse(response);
+    for(let i = 0; i < data.length; i++) {
+      let flight = data[i];
+      tableBody += "<tr>";
+      tableBody += "<td>" + flight.departure + "</td>";
+      tableBody += "<td>" + flight.arrival + "</td>";
+      tableBody += "<td>" + flight["IATA Code"] + "</td>";
+      tableBody += "<td>" + flight.Stops + "</td>";
+      tableBody += "<td>" + flight.Price + "</td>";
+      tableBody += "</tr>";
+  }
+  var new_table_html = document.getElementById(tableId).innerHTML + tableBody;
+  document.getElementById(tableId).innerHTML = new_table_html;
+}
+
 function parseResponse(response) {
-    var main_area = document.getElementById("main_area");
-    var para = document.createElement('p');
-    para.id = 'get_dump';
-    response_string = JSON.stringify(response);
-    para.innerHTML = "<p>" + response_string + "</p>";
-    main_area.appendChild(para);
-}
-
-function updateTable(json) {
-    result = jQuery.parseJSON(json);
-    var table = document.getElementById("Available_Flights_Tb");
-    
-    /*var rowCount = table.rows.length;
-    for (var i = rowCount - 1; i > 0; i--) {
-        table.deleteRow(i);
-    }*/				
-    
-    for(var k in result) {
-        var student = result[k];
-        name = student.name;
-        age = student.age;
-        loc = student.location;
-        var row = table.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        cell1.innerHTML = name;
-        cell2.innerHTML = age;
-        cell3.innerHTML = loc;
-    } 
-}
-
-function addflights() {				
-    var settings = {
-        "url": "https://test.api.amadeus.com/v2/shopping/flight-offers?" +
-        "originLocationCode=" + document.getElementById("from_input").value +
-        "&destinationLocationCode=" + document.getElementById("to_input").value +
-        "&departureDate=" + document.getElementById("date_input").value +
-        "&adults=1",
-        "method": "GET",
-        "timeout": 0,
-        "headers": {
-          "Authorization": "Bearer RPdPUzPVf23y3YbqnBqzxndygOxx"
-        },
-      };
-    $.ajax(settings).done(function (response) {
-        parseResponse(response);
-    });
+    updateTable("Available_Flights_Tb", response);
 }
 
 function callPythonFindFlights(){

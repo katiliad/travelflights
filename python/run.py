@@ -73,7 +73,9 @@ def runSpark():
 
     result_without_id_df = result_df.drop(col("unique_travel_id"))
     # result_without_id_df.show(150)
-    result_without_id_df.write.format('json').mode('overwrite').save("../"+output_folder)
+    list_of_dicts = result_without_id_df.toPandas().to_dict('records')
+    with open("../"+output_folder+"/output.json", 'w') as file:
+        file.write(json.dumps(list_of_dicts))
 
 
 def main():
