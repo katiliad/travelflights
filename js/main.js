@@ -1,3 +1,34 @@
+function addPagination() {
+  var itemsPerPage = 10; // number of entries per page
+  var table = $("#Available_Flights_Tb tbody");
+  var numPages = Math.ceil(table.find("tr").length / itemsPerPage);
+
+  table.find("tr").hide();
+  table.find("tr").slice(0, itemsPerPage).show();
+
+  $("#pagination #prev").click(function() {
+    if ($(this).data("page") > 1) {
+      table.find("tr").hide();
+      table.find("tr").slice($(this).data("page") * itemsPerPage - itemsPerPage - itemsPerPage, $(this).data("page") * itemsPerPage - itemsPerPage).show();
+      $(this).data("page", $(this).data("page") - 1);
+      $("#pagination #next").data("page", $(this).data("page"));
+    }
+  });
+
+  $("#pagination #next").click(function() {
+    if ($(this).data("page") < numPages) {
+      table.find("tr").hide();
+      table.find("tr").slice($(this).data("page") * itemsPerPage, $(this).data("page") * itemsPerPage + itemsPerPage).show();
+      $(this).data("page", $(this).data("page") + 1);
+      $("#pagination #prev").data("page", $(this).data("page"));
+    }
+  });
+
+  $("#pagination #prev").data("page", 1);
+  $("#pagination #next").data("page", 2);
+}
+
+
 function updateTable(tableId, response) {
   let tableBody = "";
   data = JSON.parse(response);
@@ -13,6 +44,7 @@ function updateTable(tableId, response) {
   }
   var new_table_html = document.getElementById(tableId).innerHTML + tableBody;
   document.getElementById(tableId).innerHTML = new_table_html;
+  addPagination();
 }
 
 function parseResponse(response) {
