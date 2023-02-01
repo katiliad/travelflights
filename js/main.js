@@ -3,13 +3,13 @@ function addPagination() {
   var table = $("#Available_Flights_Tb tbody");
   var numPages = Math.ceil(table.find("tr").length / itemsPerPage);
 
-  table.find("tr").hide();
-  table.find("tr").slice(0, itemsPerPage).show();
+  table.find("tr:not(:first)").hide();
+  table.find("tr:not(:first)").slice(0, itemsPerPage).show();
 
   $("#pagination #prev").click(function() {
     if ($(this).data("page") > 1) {
-      table.find("tr").hide();
-      table.find("tr").slice($(this).data("page") * itemsPerPage - itemsPerPage - itemsPerPage, $(this).data("page") * itemsPerPage - itemsPerPage).show();
+      table.find("tr:not(:first)").hide();
+      table.find("tr:not(:first)").slice($(this).data("page") * itemsPerPage - itemsPerPage - itemsPerPage, $(this).data("page") * itemsPerPage - itemsPerPage).show();
       $(this).data("page", $(this).data("page") - 1);
       $("#pagination #next").data("page", $(this).data("page"));
     }
@@ -17,8 +17,8 @@ function addPagination() {
 
   $("#pagination #next").click(function() {
     if ($(this).data("page") < numPages) {
-      table.find("tr").hide();
-      table.find("tr").slice($(this).data("page") * itemsPerPage, $(this).data("page") * itemsPerPage + itemsPerPage).show();
+      table.find("tr:not(:first)").hide();
+      table.find("tr:not(:first)").slice($(this).data("page") * itemsPerPage, $(this).data("page") * itemsPerPage + itemsPerPage).show();
       $(this).data("page", $(this).data("page") + 1);
       $("#pagination #prev").data("page", $(this).data("page"));
     }
